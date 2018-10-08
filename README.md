@@ -25,4 +25,4 @@ After receiving $y_A$, the KDC generates another random integer $m_K \in [0, q]$
 
 Alice receives the KDC's reply $y_K$ and uses $K_{AK}' = y_K^{m_A}~mod~q$ as its private key.
 Note that $K_{AK} = K_{AK}'$ because
-- <img src="https://latex.codecogs.com/gif.latex?O_t=K_{AK} = y_A^{m_K}~mod~q = (\alpha^{m_A})^{m_K}~mod~q = \alpha^{m_A \cdot m_K}~mod~q = (\alpha^{m_K})^{m_A}~mod~q = (y_K)^{m_A}~mod~q = K_{AK}' t " /> 
+<a href="http://www.codecogs.com/eqnedit.php?latex=K_{AK}&space;=&space;y_A^{m_K}~mod~q&space;=&space;(\alpha^{m_A})^{m_K}~mod~q&space;=&space;\alpha^{m_A&space;\cdot&space;m_K}~mod~q&space;=&space;(\alpha^{m_K})^{m_A}~mod~q&space;=&space;(y_K)^{m_A}~mod~q&space;=&space;K_{AK}'" target="_blank"><img src="http://latex.codecogs.com/gif.latex?K_{AK}&space;=&space;y_A^{m_K}~mod~q&space;=&space;(\alpha^{m_A})^{m_K}~mod~q&space;=&space;\alpha^{m_A&space;\cdot&space;m_K}~mod~q&space;=&space;(\alpha^{m_K})^{m_A}~mod~q&space;=&space;(y_K)^{m_A}~mod~q&space;=&space;K_{AK}'" title="K_{AK} = y_A^{m_K}~mod~q = (\alpha^{m_A})^{m_K}~mod~q = \alpha^{m_A \cdot m_K}~mod~q = (\alpha^{m_K})^{m_A}~mod~q = (y_K)^{m_A}~mod~q = K_{AK}'" /></a>
