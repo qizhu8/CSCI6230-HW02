@@ -21,11 +21,7 @@ In this stage, Alice and Bob use computational D-H protocol to share their priva
 Initially, all users and the KDC agree on two big prime numbers <img src="http://latex.codecogs.com/gif.latex?q" title="q" /> and <img src="http://latex.codecogs.com/gif.latex?\alpha" title="\alpha" />.
 Alice first generates a random integer <img src="http://latex.codecogs.com/gif.latex?m_A&space;\in&space;[0,&space;q]" title="m_A \in [0, q]" /> and sends <img src="http://latex.codecogs.com/gif.latex?y_A&space;=&space;\alpha^{m_A}~mod~q" title="y_A = \alpha^{m_A}~mod~q" /> to the KDC.
 
-<<<<<<< HEAD
 After receiving <img src="http://latex.codecogs.com/gif.latex?y_A" title="y_A" />, the KDC generates another random integer <img src="http://latex.codecogs.com/gif.latex?m_K&space;\in&space;[0,&space;q]" title="m_K \in [0, q]" />, save <img src="http://latex.codecogs.com/gif.latex?y_A^{m_K}" title="y_A^{m_K}" /> and Alice's id to its memory. <img src="http://latex.codecogs.com/gif.latex?K_{AK}&space;=&space;y_A^{m_K}~mod~q" title="K_{AK} = y_A^{m_K}~mod~q" /> is the private key for Alice. The KDC sends <img src="http://latex.codecogs.com/gif.latex?y_K&space;=&space;\alpha^{m_K}" title="y_K = \alpha^{m_K}" /> to Alice.
-=======
-After receiving <img src="http://latex.codecogs.com/gif.latex?y_A" title="y_A" />, the KDC generates another random integer <img src="http://latex.codecogs.com/gif.latex?m_K&space;\in&space;[0,&space;q]" title="m_K \in [0, q]" />, save <img src="http://latex.codecogs.com/gif.latex?y_A^{m_K}" title="y_A^{m_K}" /> and Alice's id to its memory. <img src="http://latex.codecogs.com/gif.latex?K_{AK}&space;=&space;y_A^{m_K}~mod~q" title="K_{AK} = y_A^{m_K}~mod~q" /> is the private key for Alice. The KDC sends $y_K = \alpha^{m_K}$ to Alice.
->>>>>>> c6c48793309c316a57e21d0f77f292ff9801889c
 
 Alice receives the KDC's reply $y_K$ and uses <img src="http://latex.codecogs.com/gif.latex?K_{AK}'&space;=&space;y_K^{m_A}~mod~q" title="K_{AK}' = y_K^{m_A}~mod~q" /> as its private key.
 Note that <img src="http://latex.codecogs.com/gif.latex?K_{AK}&space;=&space;K_{AK}'" title="K_{AK} = K_{AK}'" /> because
@@ -37,8 +33,11 @@ Suppose the adversary captures the two packets $y_A$ and $y_K$, and it also know
 After this stage, both Alice and Bob have their own keys, and their keys are known by only the KDC and themselves.
 
 ### II.2 Stage Two: Session Key Sharing
-In stage two, Alice asks the KDC to assgin a session key for the commnunication session between Alice and Bob and she sends the packet containing the session key to Bob and passes the verification test by Bob. Then a connection using the session key is built. The key sharing follows five steps:
+In stage two, Alice asks the KDC to assgin a session key for the commnunication session between Alice and Bob and she sends the packet containing the session key to Bob and passes the verification test by Bob. Then a connection using the session key is built. The key sharing follows six steps:
 
 1. Alice tells the KDC to assign a session key to talk to Bob
 2. KDC replies an encrypted packet with the session key and a cipher to Bob
-3. Alice decripts the packet and sends the cipher to Bob
+3. Alice decrypts the packet, notes down the session key and sends the cipher to Bob
+4. Bob decrpts the cipher, notes down the session key and sends an encrypted nonce to Alice to verify that Alice knows the session key
+5. Alice decrypts the nonce and applys a known permutation of the nonce and sends it back encrypted with the session key
+6. Bob checks the result and starts connecting with Alice if Alice passes the verification
