@@ -18,8 +18,8 @@ The simulation can be divided into two stages:
 ### II.1 Stage One: Private Key Sharing
 In this stage, Alice and Bob use computational D-H protocol to share their private keys to the KDC repectively. The private key is a 10-bit binary number which is used to implement the DES encryption in stage two. The following is the decription of the steps that Alice and the KDC do to share the key. The key sharing between Bob and the KDC is exactly the same.
 
-Initially, all users and the KDC agree on two big prime numbers $q$ and $\alpha$.
-Alice first generates a random integer <img src="http://latex.codecogs.com/gif.latex?m_A&space;\in&space;[0,&space;q]" title="m_A \in [0, q]" /> and sends $y_A = \alpha^{m_A}~mod~q$ to the KDC.
+Initially, all users and the KDC agree on two big prime numbers <img src="http://latex.codecogs.com/gif.latex?q" title="q" /> and <img src="http://latex.codecogs.com/gif.latex?\alpha" title="\alpha" />.
+Alice first generates a random integer <img src="http://latex.codecogs.com/gif.latex?m_A&space;\in&space;[0,&space;q]" title="m_A \in [0, q]" /> and sends <img src="http://latex.codecogs.com/gif.latex?y_A&space;=&space;\alpha^{m_A}~mod~q" title="y_A = \alpha^{m_A}~mod~q" /> to the KDC.
 
 After receiving $y_A$, the KDC generates another random integer $m_K \in [0, q]$, save $y_A^{m_K}$ and Alice's id to its memory. $K_{AK} = y_A^{m_K}~mod~q$ is the private key for Alice. The KDC sends $y_K = \alpha^{m_K}$ to Alice.
 
