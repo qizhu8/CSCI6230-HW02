@@ -21,9 +21,9 @@ In this stage, Alice and Bob use computational D-H protocol to share their priva
 Initially, all users and the KDC agree on two big prime numbers <img src="http://latex.codecogs.com/gif.latex?q" title="q" /> and <img src="http://latex.codecogs.com/gif.latex?\alpha" title="\alpha" />.
 Alice first generates a random integer <img src="http://latex.codecogs.com/gif.latex?m_A&space;\in&space;[0,&space;q]" title="m_A \in [0, q]" /> and sends <img src="http://latex.codecogs.com/gif.latex?y_A&space;=&space;\alpha^{m_A}~mod~q" title="y_A = \alpha^{m_A}~mod~q" /> to the KDC.
 
-After receiving $y_A$, the KDC generates another random integer $m_K \in [0, q]$, save $y_A^{m_K}$ and Alice's id to its memory. $K_{AK} = y_A^{m_K}~mod~q$ is the private key for Alice. The KDC sends $y_K = \alpha^{m_K}$ to Alice.
+After receiving <img src="http://latex.codecogs.com/gif.latex?y_A" title="y_A" />, the KDC generates another random integer <img src="http://latex.codecogs.com/gif.latex?m_K&space;\in&space;[0,&space;q]" title="m_K \in [0, q]" />, save <img src="http://latex.codecogs.com/gif.latex?y_A^{m_K}" title="y_A^{m_K}" /> and Alice's id to its memory. <img src="http://latex.codecogs.com/gif.latex?K_{AK}&space;=&space;y_A^{m_K}~mod~q" title="K_{AK} = y_A^{m_K}~mod~q" /> is the private key for Alice. The KDC sends $y_K = \alpha^{m_K}$ to Alice.
 
-Alice receives the KDC's reply $y_K$ and uses $K_{AK}' = y_K^{m_A}~mod~q$ as its private key.
-Note that $K_{AK} = K_{AK}'$ because
+Alice receives the KDC's reply $y_K$ and uses <img src="http://latex.codecogs.com/gif.latex?K_{AK}'&space;=&space;y_K^{m_A}~mod~q" title="K_{AK}' = y_K^{m_A}~mod~q" /> as its private key.
+Note that <img src="http://latex.codecogs.com/gif.latex?K_{AK}&space;=&space;K_{AK}'" title="K_{AK} = K_{AK}'" /> because
 
 <img src="http://latex.codecogs.com/gif.latex?K_{AK}&space;=&space;y_A^{m_K}~mod~q&space;=&space;(\alpha^{m_A})^{m_K}~mod~q&space;=&space;\alpha^{m_A&space;\cdot&space;m_K}~mod~q&space;=&space;(\alpha^{m_K})^{m_A}~mod~q&space;=&space;(y_K)^{m_A}~mod~q&space;=&space;K_{AK}'" title="K_{AK} = y_A^{m_K}~mod~q = (\alpha^{m_A})^{m_K}~mod~q = \alpha^{m_A \cdot m_K}~mod~q = (\alpha^{m_K})^{m_A}~mod~q = (y_K)^{m_A}~mod~q = K_{AK}'" />
