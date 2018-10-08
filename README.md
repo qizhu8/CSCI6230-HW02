@@ -24,4 +24,5 @@ Alice first generates a random integer $m_A \in [0, q]$ and sends $y_A = \alpha^
 After receiving $y_A$, the KDC generates another random integer $m_K \in [0, q]$, save $y_A^{m_K}$ and Alice's id to its memory. $K_{AK} = y_A^{m_K}~mod~q$ is the private key for Alice. The KDC sends $y_K = \alpha^{m_K}$ to Alice.
 
 Alice receives the KDC's reply $y_K$ and uses $K_{AK}' = y_K^{m_A}~mod~q$ as its private key.
-Note that $K_{AK} = K_{AK}'$ because- <img src="https://latex.codecogs.com/gif.latex?O_t=K_{AK} = y_A^{m_K}~mod~q = (\alpha^{m_A})^{m_K}~mod~q = \alpha^{m_A \cdot m_K}~mod~q = (\alpha^{m_K})^{m_A}~mod~q = (y_K)^{m_A}~mod~q = K_{AK}' t " /> 
+Note that $K_{AK} = K_{AK}'$ because
+- <img src="https://latex.codecogs.com/gif.latex?O_t=K_{AK} = y_A^{m_K}~mod~q = (\alpha^{m_A})^{m_K}~mod~q = \alpha^{m_A \cdot m_K}~mod~q = (\alpha^{m_K})^{m_A}~mod~q = (y_K)^{m_A}~mod~q = K_{AK}' t " /> 
