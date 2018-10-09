@@ -78,4 +78,62 @@ Each packet contains an action id and payload. Action id is a three digit number
 
 The payload of each packet contains the message to be sent. For example, in stage 2-3, Alice sends the ciphertext to Bob, the packet structure is "300||[ciphertext]".
 
-KDC keeps listening to users' key sharing requests (stage 1). Once Alice or Bob connects to the network, the first tast is to share its private key with the KDC. After that, Bob waits for other users' (Alice in this simulation) connection requests， while Alice sends KDC the request to connect to Bob. The symmetric key encryption method is DES, which is implemented in HW01. The rest communications follow exactly as the description in Stage 2.
+KDC keeps listening to users' key sharing requests (stage 1). Once Alice or Bob connects to the network, the first tast is to share its private key with the KDC.
+IDs for Alice and Bob are 100 and 200 repectively.
+
+After that, Bob waits for other users' (Alice in this simulation) connection requests， while Alice sends KDC the request to connect to Bob. The symmetric key encryption method is DES, which is implemented in HW01. The rest communications follow exactly as the description in Stage 2.
+
+## How to Run
+First, run the KDC
+```bash
+python3 kdc.py
+```
+Then, run Bob
+```bash
+python3 bob.py
+```
+finally run Alice
+```bash
+python3 alice.py
+```
+
+The terminal for KDC will show something like
+```bash
+Waiting client connection...
+Accept new connection from ('127.0.0.1', 54272)
+000||200||4724
+kdc add user:  200  key:  [1 1 1 0 1 0 1 1 0 0]
+Accept new connection from ('127.0.0.1', 54273)
+000||100||5348
+kdc add user:  100  key:  [1 0 1 0 0 1 0 0 1 0]
+100||100||200||0@1539047943.174232
+100  would like to talk to  200
+```
+
+The terminal for Bob is expected to see
+```bash
+bob: 200
+b'Hi, This is KDC. Waiting for your cipher key'
+001||317||3225
+user:  200  key:  [1 1 1 0 1 0 1 1 0 0]
+Communicate the private key with KDC
+Accept new connection from user ('127.0.0.1', 54274)
+aaa 300||kLLLLkLLLL§§kLL§§LÁkÎPL	`P	}k`	µµ
+receive request for connection from  None
+aaa 500||100||<|·6
+<}¯}
+Ò__··}·<<
+receive challenge solution from  100
+agree on connection with  100
+```
+The teriminal for Alice shows
+```bash
+alice: 100
+b'Hi, This is KDC. Waiting for your cipher key'
+001||317||9799
+user:  100  key:  [1 0 1 0 0 1 0 0 1 0]
+Communicate the private key with KDC
+ask for the sess key to talk to  200
+200||¹2222¹2222ÿÿC22ÿÿ23¹8W2s[Ws¹[sCCÿÿööööv1AþþAþA
+connected with bob
+```
