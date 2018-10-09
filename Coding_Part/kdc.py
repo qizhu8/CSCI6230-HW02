@@ -19,7 +19,7 @@ if sys.version_info[0] < 3:
 def assign_keys(conn, addr):
     print('Accept new connection from {0}'.format(addr));
     #conn.settimeout(500)
-    conn.send(b'Hi, This is KDC. Waiting for your cipher key')
+    conn.send(b'Hi, This is KDC. Waiting for your cipher key.')
     buf = conn.recv(1024)
     while True:
         if buf:
@@ -46,7 +46,7 @@ try:
 except socket.error as msg:
     print(msg);
     sys.exit(1)
-print('Waiting client connection...');
+print('Waiting for client connection...');
 
 
 while 1:
