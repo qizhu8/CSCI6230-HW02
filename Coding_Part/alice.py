@@ -49,7 +49,7 @@ except socket.error as msg:
 try:
     sock_self = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock_self.connect((bob_host, bob_port))
-    print('connected with bob')
+    print('connecting to bob')
     # talk to bob
     packet_REQ_CON = alice.request_connection(packet_RPY_KEY)
     sock_self.send(packet_REQ_CON.encode())
@@ -57,7 +57,11 @@ try:
 
     packet_RPY_CHLNG_SOL = alice.reply_challenge_sol(packet_RPY_CHLNG, bob_uid)
     sock_self.send(packet_RPY_CHLNG_SOL.encode())
-    print(sock_with_kdc.recv(1024))
+    connection_rst = sock_self.recv(1024).decode()
+    if connection_rst == '1':
+        print('session created successfully!')
+    else:
+        print('session created failed!')
     print('finish task')
 except socket.error as msg:
     print(msg);

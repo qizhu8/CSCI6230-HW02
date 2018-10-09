@@ -22,8 +22,6 @@ def reply_conn(conn, addr):
     while True:
         if buf:
             receive_packet = bytes.decode(buf).rstrip('\x00')
-            print('aaa', receive_packet)
-
             reply_packet = bob.process_packet(receive_packet)
             conn.send(reply_packet.encode())
             buf = conn.recv(1024)

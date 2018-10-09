@@ -327,7 +327,7 @@ class NetworkUser(object):
                 print('agree on connection with ', packet_info['src_uid'])
             else:
                 print('deny on connection with ', packet_info['src_uid'])
-            return str(check_challenge_sol_rst)
+            return str(check_challenge_sol_rst+0)
         else:
             print('action name ', action_name, ' unknown')
 

@@ -136,4 +136,6 @@ Communicate the private key with KDC
 ask for the sess key to talk to  200
 200||¹2222¹2222ÿÿC22ÿÿ23¹8W2s[Ws¹[sCCÿÿööööv1AþþAþA
 connected with bob
+session created successfully!
+finish task
 ```
